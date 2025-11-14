@@ -422,9 +422,10 @@ For detailed contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## 🔄 Version
 
-**v1.5.0** - Current MCP server version
+**v1.5.1** - Current MCP server version
 
 ### Release Notes
 
-- ✅ **v1.5.0** - Docker support with configurable port, removed Railway dependency
+- ✅ **v1.5.1** - Fix CI security audit workflow
+- v1.5.0 - Docker support with configurable port, removed Railway dependency
 - v1.4.0 - Previous stable release

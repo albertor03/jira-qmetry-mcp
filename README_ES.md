@@ -422,9 +422,10 @@ Para guías detalladas de contribución, consulta [CONTRIBUTING.md](CONTRIBUTING
 
 ## 🔄 Versión
 
-**v1.5.0** - Versión actual del servidor MCP
+**v1.5.1** - Versión actual del servidor MCP
 
 ### Notas de la Versión
 
-- ✅ **v1.5.0** - Soporte Docker con puerto configurable, dependencia de Railway removida
+- ✅ **v1.5.1** - Corregir fallo en workflow de auditoría de seguridad del CI
+- v1.5.0 - Soporte Docker con puerto configurable, dependencia de Railway removida
 - v1.4.0 - Versión estable anterior
