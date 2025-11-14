@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  jira-qmetry-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: jira-qmetry-mcp-server
+    ports:
+      - "${PORT:-3000}:${PORT:-3000}"
+    environment:
+      - NODE_ENV=${NODE_ENV:-production}
+      - PORT=${PORT:-3000}
+      - QMETRY_API_KEY=${QMETRY_API_KEY}
+    restart: unless-stopped
