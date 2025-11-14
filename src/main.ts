@@ -30,7 +30,7 @@ import { customFieldTools } from './tools/custom-field-tools.js';
  */
 const server = new McpServer({
   name: 'Jira Qmetry MCP',
-  version: '1.1.0',
+  version: '1.5.1',
   title: 'Jira Qmetry MCP',
   description: 'Jira Qmetry MCP',
 });

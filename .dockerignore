@@ -1,0 +1,55 @@
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Build output
+dist/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Test files
+coverage/
+*.test.ts
+*.spec.ts
+
+# Documentation (except the ones we need)
+*.md
+!README.md
+!README_ES.md
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+
+# Railway config (not needed for Docker)
+railway.toml
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Logs
+logs/
+*.log
+

@@ -102,7 +102,9 @@ export QMETRY_API_KEY="tu-clave-de-api-aqui"
 
 > 💡 **Nota**: La clave API se genera desde la interfaz de Jira: `QMetry > Configuration > Open API > Generate`
 
-### 4. Ejecución del Servidor
+### 3. Ejecución del Servidor
+
+#### Opción A: Desarrollo Local
 
 ```bash
 pnpm start
@@ -113,6 +115,50 @@ Para usar el inspector MCP:
 ```bash
 pnpm run:inspector
 ```
+
+#### Opción B: Despliegue con Docker
+
+El proyecto incluye un Dockerfile simple que funciona con cualquier plataforma (Railway, Dokploy, Render, etc.).
+
+**Usando Docker directamente**:
+
+```bash
+# Construir la imagen
+docker build -t jira-qmetry-mcp .
+
+# Ejecutar el contenedor (puerto configurable)
+docker run -d \
+  --name jira-qmetry-mcp \
+  -p 3000:3000 \
+  -e PORT=3000 \
+  -e QMETRY_API_KEY="tu-clave-api-aqui" \
+  jira-qmetry-mcp
+
+# Ver logs
+docker logs -f jira-qmetry-mcp
+```
+
+**Usando Docker Compose (para desarrollo local)**:
+
+```bash
+# Crear archivo .env con tu configuración
+cp .env.example .env
+# Editar .env y agregar tu QMETRY_API_KEY
+
+# Iniciar el servicio
+docker-compose up -d
+
+# Ver logs
+docker-compose logs -f
+```
+
+**Desplegando en Railway/Dokploy/Render**:
+
+Estas plataformas detectarán automáticamente el Dockerfile. Solo configura las variables de entorno:
+
+- `PORT` - Será configurado automáticamente por la plataforma (o usa 3000)
+- `QMETRY_API_KEY` - Tu clave API de QMetry (requerida)
+- `NODE_ENV` - Configura como `production` (opcional, por defecto es production)
 
 ## 🛠️ Herramientas Disponibles
 
@@ -376,4 +422,10 @@ Para guías detalladas de contribución, consulta [CONTRIBUTING.md](CONTRIBUTING
 
 ## 🔄 Versión
 
-**v1.1.0** - Versión actual del servidor MCP
+**v1.5.1** - Versión actual del servidor MCP
+
+### Notas de la Versión
+
+- ✅ **v1.5.1** - Corregir fallo en workflow de auditoría de seguridad del CI
+- v1.5.0 - Soporte Docker con puerto configurable, dependencia de Railway removida
+- v1.4.0 - Versión estable anterior
