@@ -4,7 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { dirname } from 'path';
 import {
-  GetLinkedRequirementsParams,
+  GetLinkedTestCasesParams,
   LinkRequirementParams,
   UnlinkRequirementParams,
 } from '../interfaces/qmetry-linked-requirements.js';
@@ -19,15 +19,15 @@ const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 const qmetry_api_url = config.qmetry_api_url;
 
 /**
- * Get linked requirements for a specific test case in Qmetry.
- * @param params - The search parameters including testcaseId and optional pagination.
+ * Get linked test cases for a specific requirement in Qmetry.
+ * @param params - The search parameters including requirementId and optional filters.
  * @returns {Promise<{content: [{type: string, text: string}]}>} The response from the API.
  * The content property of the response contains an array with a single
  * object that has a type property with value "text" and a text property
  * with the JSON response from the API.
  */
-export async function getQmetryLinkedRequirements(
-  params: GetLinkedRequirementsParams
+export async function getQmetryLinkedTestCases(
+  params: GetLinkedTestCasesParams
 ): Promise<{ content: [{ type: string; text: string }] }> {
   const api_key = process.env.QMETRY_API_KEY;
   if (!api_key) {
@@ -37,37 +37,44 @@ export async function getQmetryLinkedRequirements(
   }
 
   try {
-    const { id, tcVersionNo, maxResults, startAt } = params;
-    const url = new URL(
-      `${qmetry_api_url}testcases/${id}/requirements?VersionNo=${tcVersionNo}`
-    );
+    const { id, fields, sort, startAt, maxResults, filter } = params;
+    const url = new URL(`${qmetry_api_url}requirements/${id}/testcases`);
 
     // Add query parameters if provided
-    if (maxResults !== undefined) {
-      url.searchParams.append('maxResults', maxResults.toString());
+    if (fields !== undefined) {
+      url.searchParams.append('fields', fields);
+    }
+    if (sort !== undefined) {
+      url.searchParams.append('sort', sort);
     }
     if (startAt !== undefined) {
       url.searchParams.append('startAt', startAt.toString());
     }
+    if (maxResults !== undefined) {
+      url.searchParams.append('maxResults', maxResults.toString());
+    }
+
+    const requestBody = filter ? { filter } : {};
 
     const response = await fetch(url.toString(), {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         apikey: api_key,
       },
+      body: JSON.stringify(requestBody),
     });
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
       throw new Error(
-        `Error getting linked requirements: ${response.status} ${response.statusText} - ${JSON.stringify(errorData)}`
+        `Error getting linked test cases: ${response.status} ${response.statusText} - ${JSON.stringify(errorData)}`
       );
     }
 
     return await response.json();
   } catch (error) {
-    process.stderr.write(`Error in getQmetryLinkedRequirements: ${error}\n`);
+    process.stderr.write(`Error in getQmetryLinkedTestCases: ${error}\n`);
     throw error;
   }
 }
