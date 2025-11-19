@@ -333,18 +333,21 @@ These platforms will automatically detect the Dockerfile. Just set the environme
 **Tools**: `get-qmetry-custom-field-types`, `get-qmetry-test-case-custom-fields`, `get-tc-custom-field-ref-count`, `get-qmetry-test-cycle-custom-fields`, `get-tcy-custom-field-ref-count`, `get-qmetry-test-plan-custom-fields`, `get-tp-custom-field-ref-count`, `get-qmetry-te-custom-fields`, `get-te-custom-field-ref-count`
 
 **Custom Fields in Test Cases, Cycles & Plans**:
+
 - Add/filter by custom fields when: creating, updating, searching test cases, test cycles, and test plans
 - Custom fields structure: `[{ id: string; value: string }]`
 
 **Get Custom Field Types**: List all available custom field types in QMetry
 
 **Get Custom Fields by Module**:
+
 - **Test Case**: `get-qmetry-test-case-custom-fields` - Get all test case custom field details
 - **Test Cycle**: `get-qmetry-test-cycle-custom-fields` - Get all test cycle custom field details
 - **Test Plan**: `get-qmetry-test-plan-custom-fields` - Get all test plan custom field details
 - **Test Execution**: `get-qmetry-te-custom-fields` - Get all test execution custom field details
 
 **Reference Counts**: Check how many items reference each custom field:
+
 - `get-tc-custom-field-ref-count` - Test case references
 - `get-tcy-custom-field-ref-count` - Test cycle references
 - `get-tp-custom-field-ref-count` - Test plan references
@@ -422,10 +425,8 @@ For detailed contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## 🔄 Version
 
-**v1.5.1** - Current MCP server version
+**v1.6.0** - Current MCP server version
 
 ### Release Notes
 
-- ✅ **v1.5.1** - Fix CI security audit workflow
-- v1.5.0 - Docker support with configurable port, removed Railway dependency
-- v1.4.0 - Previous stable release
+- ✅ **v1.6.0** - Update linked requirements functionality: Changed from getting linked requirements for a test case to getting linked test cases for a requirement

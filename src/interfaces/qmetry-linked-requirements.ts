@@ -1,16 +1,20 @@
 /**
- * Defines the parameters for searching linked requirements.
- * @interface SearchLinkedRequirementsParams
- * @property {string} id - Refer id from the response of API "Search Test Case".
- * @property {number} tcVersionNo - Test Case version No. Refer {version.versionNo} from the response of API "Search Test Case".
- * @property {number} [maxResults] - Refer in parameters
- * @property {number} [startAt] - Refer in parameters
+ * Defines the parameters for searching linked test cases.
+ * @interface GetLinkedTestCasesParams
+ * @property {string} id - Jira Requirement Id
+ * @property {string} [fields] - Fields to be fetched
+ * @property {string} [sort] - Pattern fieldName:order, eg: key:asc
+ * @property {number} [startAt] - default 0
+ * @property {number} [maxResults] - Default 50, Max 100
+ * @property {string} [filter] - Filter results by fields
  */
-export interface GetLinkedRequirementsParams {
+export interface GetLinkedTestCasesParams {
   id: string;
-  tcVersionNo: number;
-  maxResults?: number;
+  fields?: string;
+  sort?: string;
   startAt?: number;
+  maxResults?: number;
+  filter?: Record<string, unknown>;
 }
 
 /**
