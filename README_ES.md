@@ -333,18 +333,21 @@ Estas plataformas detectarán automáticamente el Dockerfile. Solo configura las
 **Herramientas**: `get-qmetry-custom-field-types`, `get-qmetry-test-case-custom-fields`, `get-tc-custom-field-ref-count`, `get-qmetry-test-cycle-custom-fields`, `get-tcy-custom-field-ref-count`, `get-qmetry-test-plan-custom-fields`, `get-tp-custom-field-ref-count`, `get-qmetry-te-custom-fields`, `get-te-custom-field-ref-count`
 
 **Campos Personalizados en Test Cases, Cycles y Plans**:
+
 - Agregar/filtrar por campos personalizados al: crear, actualizar, buscar casos de prueba, ciclos y planes
 - Estructura de campos personalizados: `[{ id: string; value: string }]`
 
 **Obtener Tipos de Campos Personalizados**: Listar todos los tipos de campos disponibles en QMetry
 
 **Obtener Campos Personalizados por Módulo**:
+
 - **Test Case**: `get-qmetry-test-case-custom-fields` - Obtener detalles de campos personalizados
 - **Test Cycle**: `get-qmetry-test-cycle-custom-fields` - Obtener detalles de campos personalizados
 - **Test Plan**: `get-qmetry-test-plan-custom-fields` - Obtener detalles de campos personalizados
 - **Test Execution**: `get-qmetry-te-custom-fields` - Obtener detalles de campos personalizados
 
 **Contadores de Referencias**: Verificar cuántos elementos referencian cada campo personalizado:
+
 - `get-tc-custom-field-ref-count` - Referencias de test cases
 - `get-tcy-custom-field-ref-count` - Referencias de test cycles
 - `get-tp-custom-field-ref-count` - Referencias de test plans
@@ -422,10 +425,8 @@ Para guías detalladas de contribución, consulta [CONTRIBUTING.md](CONTRIBUTING
 
 ## 🔄 Versión
 
-**v1.5.1** - Versión actual del servidor MCP
+**v1.6.0** - Versión actual del servidor MCP
 
 ### Notas de la Versión
 
-- ✅ **v1.5.1** - Corregir fallo en workflow de auditoría de seguridad del CI
-- v1.5.0 - Soporte Docker con puerto configurable, dependencia de Railway removida
-- v1.4.0 - Versión estable anterior
+- ✅ **v1.6.0** - Actualización de funcionalidad de requisitos vinculados: Cambio de obtener requisitos vinculados para un caso de prueba a obtener casos de prueba vinculados para un requisito

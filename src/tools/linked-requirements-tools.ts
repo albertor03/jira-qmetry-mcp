@@ -1,43 +1,49 @@
 import { z } from 'zod';
 import { ToolDefinition } from '../interfaces/index.js';
 import {
-  getQmetryLinkedRequirements,
+  getQmetryLinkedTestCases,
   linkQmetryRequirements,
   unlinkQmetryRequirements,
 } from '../api/qmetry-linked-requirements.js';
 import {
-  GetLinkedRequirementsParams,
+  GetLinkedTestCasesParams,
   LinkRequirementParams,
   UnlinkRequirementParams,
 } from '../interfaces/qmetry-linked-requirements.js';
 
 export const linkedRequirementsTools: Array<ToolDefinition> = [
   {
-    name: 'get-qmetry-linked-requirements',
+    name: 'get-qmetry-linked-test-cases',
     definition: {
-      title: 'Get linked requirements for a test case',
+      title: 'Get linked test cases for a requirement',
       description:
-        'Get all requirements (Jira issues) linked to a specific test case in Qmetry',
+        'Get all test cases linked to a specific requirement (Jira issue) in Qmetry',
       inputSchema: {
-        id: z
+        id: z.string().describe('Jira Requirement Id. Example: "10000"'),
+        fields: z
           .string()
+          .optional()
+          .default('summary,priority,status')
           .describe(
-            'Test Case Id. Refer id from the response of API "Search Test Case".'
+            'Fields to be fetched. Multiple comma separated values also possible. Example: "fixVersions"'
           ),
-        no: z
-          .number()
-          .describe(
-            'Test Case version No. Refer {version.versionNo} from the response of API "Search Test Case".'
-          ),
-        maxResults: z.number().optional().describe('Refer in parameters'),
-        startAt: z.number().optional().describe('Refer in parameters'),
+        sort: z
+          .string()
+          .optional()
+          .describe('Pattern fieldName:order, eg: key:asc'),
+        startAt: z.number().optional().describe('default 0'),
+        maxResults: z.number().optional().describe('Default 50, Max 100'),
+        filter: z
+          .record(z.string(), z.any())
+          .optional()
+          .describe('Filter results by fields'),
       },
     },
-    handler: async (params: GetLinkedRequirementsParams) => {
-      const linkedRequirements = await getQmetryLinkedRequirements(params);
+    handler: async (params: GetLinkedTestCasesParams) => {
+      const linkedTestCases = await getQmetryLinkedTestCases(params);
       return {
         content: [
-          { type: 'text', text: JSON.stringify(linkedRequirements, null, 2) },
+          { type: 'text', text: JSON.stringify(linkedTestCases, null, 2) },
         ],
       };
     },
