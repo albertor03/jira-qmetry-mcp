@@ -19,6 +19,7 @@ import { testCycleStatusTools } from './tools/test-cycle-status-tools.js';
 import { testPlanStatusTools } from './tools/test-plan-status-tools.js';
 import { linkedRequirementsTools } from './tools/linked-requirements-tools.js';
 import { customFieldTools } from './tools/custom-field-tools.js';
+import { testCycleExecutionTools } from './tools/test-cycle-execution-tools.js';
 
 /**
  * Tool registry for executing QMetry operations
@@ -30,7 +31,7 @@ const toolRegistry: Map<string, ToolDefinition> = new Map();
  */
 const server = new McpServer({
   name: 'Jira Qmetry MCP HTTP',
-  version: '1.6.0',
+  version: '1.7.0',
   title: 'Jira Qmetry MCP with Streamable HTTP Support',
   description: 'Jira Qmetry MCP with Streamable HTTP support',
 });
@@ -151,6 +152,7 @@ registerTools(server, [
   ...testPlanStatusTools,
   ...linkedRequirementsTools,
   ...customFieldTools,
+  ...testCycleExecutionTools,
 ]);
 
 /**

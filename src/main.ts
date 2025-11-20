@@ -19,6 +19,7 @@ import { testCycleStatusTools } from './tools/test-cycle-status-tools.js';
 import { testPlanStatusTools } from './tools/test-plan-status-tools.js';
 import { linkedRequirementsTools } from './tools/linked-requirements-tools.js';
 import { customFieldTools } from './tools/custom-field-tools.js';
+import { testCycleExecutionTools } from './tools/test-cycle-execution-tools.js';
 
 /**
  * Creates a new MCP server instance.
@@ -30,7 +31,7 @@ import { customFieldTools } from './tools/custom-field-tools.js';
  */
 const server = new McpServer({
   name: 'Jira Qmetry MCP',
-  version: '1.6.0',
+  version: '1.7.0',
   title: 'Jira Qmetry MCP',
   description: 'Jira Qmetry MCP',
 });
@@ -79,6 +80,7 @@ registerTools(server, [
   ...testPlanStatusTools,
   ...linkedRequirementsTools,
   ...customFieldTools,
+  ...testCycleExecutionTools,
 ]);
 
 /**
