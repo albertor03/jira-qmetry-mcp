@@ -16,3 +16,22 @@ export interface GetLinkedTestCasesParams {
   sort?: string;
   filter: Record<string, unknown>;
 }
+
+/**
+ * Interface for getting defects linked on test cycle executions.
+ * @interface GetDefectsParams
+ * @property {string} id - Refer keyId from the response of API "Get Test Cycle".
+ * @property {number} [startAt] - Refer Parameters.
+ * @property {number} [maxResults] - Refer Parameters.
+ * @property {string} [fields] - Refer Parameters.
+ * @property {string} [sort] - Refer Parameters.
+ * @property {Record<string, unknown>} filter - User can filter data using following fields.
+ */
+export interface GetDefectsParams {
+  id: string;
+  startAt?: number;
+  maxResults?: number;
+  fields?: string;
+  sort?: string;
+  filter: Record<string, unknown>;
+}
