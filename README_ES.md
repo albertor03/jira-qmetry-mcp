@@ -39,7 +39,8 @@ jira-qmetry-mcp/
 │   │   ├── qmetry-labels.ts
 │   │   ├── qmetry-components.ts
 │   │   ├── qmetry-linked-requirements.ts
-│   │   └── qmetry-custom-fields.ts
+│   │   ├── qmetry-custom-fields.ts
+│   │   └── qmetry-test-cycle-executions.ts
 │   ├── interfaces/                   # Definiciones de tipos TypeScript
 │   │   ├── qmetry-projects.ts
 │   │   ├── qmetry-test-cases.ts
@@ -52,6 +53,7 @@ jira-qmetry-mcp/
 │   │   ├── qmetry-status.ts
 │   │   ├── qmetry-linked-requirements.ts
 │   │   ├── qmetry-custom-fields.ts
+│   │   ├── qmetry-test-cycle-executions.ts
 │   │   ├── toolDefinition.ts
 │   │   └── index.ts
 │   ├── tools/                        # Definiciones de herramientas MCP
@@ -67,7 +69,8 @@ jira-qmetry-mcp/
 │   │   ├── priority-tools.ts
 │   │   ├── label-tools.ts
 │   │   ├── linked-requirements-tools.ts
-│   │   └── custom-field-tools.ts
+│   │   ├── custom-field-tools.ts
+│   │   └── test-cycle-execution-tools.ts
 │   ├── utils/                        # Utilidades y helpers
 │   │   ├── logger.ts
 │   │   ├── object.utils.ts
@@ -241,6 +244,19 @@ Estas plataformas detectarán automáticamente el Dockerfile. Solo configura las
 - **Obtener planes de prueba vinculados**: Ver planes de prueba vinculados a un ciclo
 - **Vincular/Desvincular requisitos**: Gestionar requisitos de Jira vinculados a ciclos
 - **Archivar**: Archivar o desarchivar ciclos de prueba
+
+---
+
+### 🔄 Ejecución de Ciclos de Prueba
+
+**Herramientas**: `get-qmetry-test-cycle-linked-test-cases`, `get-qmetry-test-cycle-linked-defects`
+
+- **Obtener casos de prueba vinculados**: Recuperar todos los casos de prueba vinculados a un ciclo de prueba específico con filtrado avanzado
+  - Filtrar por: searchText, status, priority, testCaseKey, environment, executionResult, build, removeDuplicates, linkedBetweenDates, executionLevel
+  - Soporta paginación, selección de campos y ordenamiento
+- **Obtener defectos vinculados**: Recuperar todos los defectos vinculados a ejecuciones de ciclos de prueba
+  - Filtrar por: searchText, status, priority, testCaseKey, environment, executionResult, build, removeDuplicates, linkedBetweenDates, executionLevel
+  - Soporta paginación, selección de campos y ordenamiento
 
 ---
 
@@ -425,8 +441,8 @@ Para guías detalladas de contribución, consulta [CONTRIBUTING.md](CONTRIBUTING
 
 ## 🔄 Versión
 
-**v1.6.0** - Versión actual del servidor MCP
+**v1.7.0** - Versión actual del servidor MCP
 
 ### Notas de la Versión
 
-- ✅ **v1.6.0** - Actualización de funcionalidad de requisitos vinculados: Cambio de obtener requisitos vinculados para un caso de prueba a obtener casos de prueba vinculados para un requisito
+- ✅ **v1.7.0** - Agregar herramientas de Ejecución de Ciclos de Prueba: Obtener casos de prueba y defectos vinculados para ejecuciones de ciclos de prueba con filtrado completo

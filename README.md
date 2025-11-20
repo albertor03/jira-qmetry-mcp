@@ -39,7 +39,8 @@ jira-qmetry-mcp/
 │   │   ├── qmetry-labels.ts
 │   │   ├── qmetry-components.ts
 │   │   ├── qmetry-linked-requirements.ts
-│   │   └── qmetry-custom-fields.ts
+│   │   ├── qmetry-custom-fields.ts
+│   │   └── qmetry-test-cycle-executions.ts
 │   ├── interfaces/                   # TypeScript type definitions
 │   │   ├── qmetry-projects.ts
 │   │   ├── qmetry-test-cases.ts
@@ -52,6 +53,7 @@ jira-qmetry-mcp/
 │   │   ├── qmetry-status.ts
 │   │   ├── qmetry-linked-requirements.ts
 │   │   ├── qmetry-custom-fields.ts
+│   │   ├── qmetry-test-cycle-executions.ts
 │   │   ├── toolDefinition.ts
 │   │   └── index.ts
 │   ├── tools/                        # MCP tool definitions
@@ -67,7 +69,8 @@ jira-qmetry-mcp/
 │   │   ├── priority-tools.ts
 │   │   ├── label-tools.ts
 │   │   ├── linked-requirements-tools.ts
-│   │   └── custom-field-tools.ts
+│   │   ├── custom-field-tools.ts
+│   │   └── test-cycle-execution-tools.ts
 │   ├── utils/                        # Utilities and helpers
 │   │   ├── logger.ts
 │   │   ├── object.utils.ts
@@ -241,6 +244,19 @@ These platforms will automatically detect the Dockerfile. Just set the environme
 - **Get linked test plans**: View test plans linked to a test cycle
 - **Link/Unlink requirements**: Manage Jira requirements linked to cycles
 - **Archive**: Archive or unarchive test cycles
+
+---
+
+### 🔄 Test Cycle Execution
+
+**Tools**: `get-qmetry-test-cycle-linked-test-cases`, `get-qmetry-test-cycle-linked-defects`
+
+- **Get linked test cases**: Retrieve all test cases linked to a specific test cycle with advanced filtering
+  - Filter by: searchText, status, priority, testCaseKey, environment, executionResult, build, removeDuplicates, linkedBetweenDates, executionLevel
+  - Supports pagination, field selection, and sorting
+- **Get linked defects**: Retrieve all defects linked to test cycle executions
+  - Filter by: searchText, status, priority, testCaseKey, environment, executionResult, build, removeDuplicates, linkedBetweenDates, executionLevel
+  - Supports pagination, field selection, and sorting
 
 ---
 
@@ -425,8 +441,8 @@ For detailed contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## 🔄 Version
 
-**v1.6.0** - Current MCP server version
+**v1.7.0** - Current MCP server version
 
 ### Release Notes
 
-- ✅ **v1.6.0** - Update linked requirements functionality: Changed from getting linked requirements for a test case to getting linked test cases for a requirement
+- ✅ **v1.7.0** - Add Test Cycle Execution tools: Get linked test cases and defects for test cycle executions with comprehensive filtering

@@ -31,7 +31,7 @@ import { testCycleExecutionTools } from './tools/test-cycle-execution-tools.js';
  */
 const server = new McpServer({
   name: 'Jira Qmetry MCP',
-  version: '1.6.0',
+  version: '1.7.0',
   title: 'Jira Qmetry MCP',
   description: 'Jira Qmetry MCP',
 });
