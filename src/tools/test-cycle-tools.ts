@@ -50,6 +50,10 @@ export const testCycleTools: Array<ToolDefinition> = [
               .describe(
                 'Refer id from response of API "Get Test Cycle folders"'
               ),
+            searchText: z
+              .string()
+              .optional()
+              .describe('Search text for test cycle key'),
             summary: z.string().optional().describe('Test Cycle summary/name'),
             status: z
               .array(z.string())
