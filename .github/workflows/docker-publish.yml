@@ -10,7 +10,7 @@ on:
 
 env:
     REGISTRY: docker.io
-    DOCKER_ORG: mcp
+    DOCKER_ORG: ${{ secrets.DOCKER_USERNAME }}
     IMAGE_NAME: jira-qmetry-mcp-server
 
 jobs:
