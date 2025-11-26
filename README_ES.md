@@ -441,8 +441,8 @@ Para guías detalladas de contribución, consulta [CONTRIBUTING.md](CONTRIBUTING
 
 ## 🔄 Versión
 
-**v1.7.0** - Versión actual del servidor MCP
+**v1.8.0** - Versión actual del servidor MCP
 
 ### Notas de la Versión
 
-- ✅ **v1.7.0** - Agregar herramientas de Ejecución de Ciclos de Prueba: Obtener casos de prueba y defectos vinculados para ejecuciones de ciclos de prueba con filtrado completo
+- ✅ **v1.8.0** - Agregar workflow de publicación en Docker Hub: Construcción y publicación automática de imágenes Docker en Docker Hub al publicar un release

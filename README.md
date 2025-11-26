@@ -441,8 +441,8 @@ For detailed contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## 🔄 Version
 
-**v1.7.0** - Current MCP server version
+**v1.8.0** - Current MCP server version
 
 ### Release Notes
 
-- ✅ **v1.7.0** - Add Test Cycle Execution tools: Get linked test cases and defects for test cycle executions with comprehensive filtering
+- ✅ **v1.8.0** - Add Docker Hub publish workflow: Automated Docker image build and publish to Docker Hub on release publication
