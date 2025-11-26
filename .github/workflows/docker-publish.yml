@@ -10,6 +10,7 @@ on:
 
 env:
     REGISTRY: docker.io
+    DOCKER_ORG: mcp
     IMAGE_NAME: jira-qmetry-mcp-server
 
 jobs:
@@ -33,12 +34,13 @@ jobs:
               with:
                   username: ${{ secrets.DOCKER_USERNAME }}
                   password: ${{ secrets.DOCKER_TOKEN }}
+                  logout: false
 
             - name: Extract metadata (tags, labels) for Docker
               id: meta
               uses: docker/metadata-action@v5
               with:
-                  images: ${{ env.REGISTRY }}/${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}
+                  images: ${{ env.REGISTRY }}/${{ env.DOCKER_ORG }}/${{ env.IMAGE_NAME }}
                   tags: |
                       type=semver,pattern={{version}}
                       type=semver,pattern={{major}}.{{minor}}
@@ -55,8 +57,18 @@ jobs:
                   push: true
                   tags: ${{ steps.meta.outputs.tags }}
                   labels: ${{ steps.meta.outputs.labels }}
-                  cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:buildcache
-                  cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:buildcache,mode=max
+                  cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.DOCKER_ORG }}/${{ env.IMAGE_NAME }}:buildcache
+                  cache-to: type=registry,ref=${{ env.REGISTRY }}/${{ env.DOCKER_ORG }}/${{ env.IMAGE_NAME }}:buildcache,mode=max
+
+            - name: Update Docker Hub repository description
+              if: github.event_name == 'release'
+              run: |
+                  TOKEN=$(curl -s -H "Content-Type: application/json" -X POST -d "{\"username\":\"${{ secrets.DOCKER_USERNAME }}\",\"password\":\"${{ secrets.DOCKER_TOKEN }}\"}" https://hub.docker.com/v2/users/login/ | jq -r .token)
+                  curl -X PATCH \
+                    -H "Authorization: JWT $TOKEN" \
+                    -H "Content-Type: application/json" \
+                    -d '{"full_description":"MCP server for QMetry Test Management in Jira. Manage test cases, cycles, and plans."}' \
+                    https://hub.docker.com/v2/repositories/${{ env.DOCKER_ORG }}/${{ env.IMAGE_NAME }}/ || echo "Failed to update description (may need manual setup)"
 
             - name: Image digest
               run: echo ${{ steps.meta.outputs.digest }}
@@ -66,8 +78,8 @@ jobs:
               run: |
                   echo "### 🐳 Docker Image Published" >> $GITHUB_STEP_SUMMARY
                   echo "" >> $GITHUB_STEP_SUMMARY
-                  echo "**Image**: \`${{ env.REGISTRY }}/${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}\`" >> $GITHUB_STEP_SUMMARY
+                  echo "**Image**: \`${{ env.REGISTRY }}/${{ env.DOCKER_ORG }}/${{ env.IMAGE_NAME }}\`" >> $GITHUB_STEP_SUMMARY
                   echo "" >> $GITHUB_STEP_SUMMARY
                   echo "**Tags**: ${{ steps.meta.outputs.tags }}" >> $GITHUB_STEP_SUMMARY
                   echo "" >> $GITHUB_STEP_SUMMARY
-                  echo "**Docker Hub**: https://hub.docker.com/r/${{ secrets.DOCKER_USERNAME }}/jira-qmetry-mcp-server" >> $GITHUB_STEP_SUMMARY
+                  echo "**Docker Hub**: https://hub.docker.com/r/${{ env.DOCKER_ORG }}/${{ env.IMAGE_NAME }}" >> $GITHUB_STEP_SUMMARY
