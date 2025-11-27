@@ -441,8 +441,8 @@ Para guías detalladas de contribución, consulta [CONTRIBUTING.md](CONTRIBUTING
 
 ## 🔄 Versión
 
-**v1.7.0** - Versión actual del servidor MCP
+**v1.8.1** - Versión actual del servidor MCP
 
 ### Notas de la Versión
 
-- ✅ **v1.7.0** - Agregar herramientas de Ejecución de Ciclos de Prueba: Obtener casos de prueba y defectos vinculados para ejecuciones de ciclos de prueba con filtrado completo
+- ✅ **v1.8.1** - Actualización de interfaces y herramientas de ciclos de prueba: Funcionalidad mejorada para la gestión de ciclos de prueba

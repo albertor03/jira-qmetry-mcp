@@ -25,6 +25,7 @@ export interface SearchTestCyclesParams {
   filter: {
     projectId?: string;
     folderId?: number;
+    searchText?: string;
     summary?: string;
     status?: string[];
     priority?: string;
