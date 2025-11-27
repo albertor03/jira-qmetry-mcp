@@ -441,8 +441,8 @@ For detailed contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## 🔄 Version
 
-**v1.8.0** - Current MCP server version
+**v1.8.1** - Current MCP server version
 
 ### Release Notes
 
-- ✅ **v1.8.0** - Add Docker Hub publish workflow: Automated Docker image build and publish to Docker Hub on release publication
+- ✅ **v1.8.1** - Update test cycle interfaces and tools: Enhanced test cycle management functionality
