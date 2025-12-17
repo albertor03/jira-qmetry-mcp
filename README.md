@@ -441,8 +441,8 @@ For detailed contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## 🔄 Version
 
-**v1.8.1** - Current MCP server version
+**v1.8.2** - Current MCP server version
 
 ### Release Notes
 
-- ✅ **v1.8.1** - Update test cycle interfaces and tools: Enhanced test cycle management functionality
+- ✅ **v1.8.2** - Fix assignee and reporter field types: Changed from number to string to properly support Jira user account UUIDs

@@ -54,7 +54,7 @@ export interface SearchTestCyclesParams {
  * @property {number} [folderId] - The ID of the folder where test cycle is stored
  * @property {number} [priority] - Priority Id
  * @property {number} [status] - Status Id
- * @property {number} [reporter] - Jira user account uuid
+ * @property {string} [reporter] - Jira user account uuid
  * @property {number[]} [labels] - List of label Ids (will be sent as {add: [labelId1, labelId2, ...]} to API)
  * @property {string} [testCasesToLink] - Either list of test case Ids or search filter query
  * @property {string} [description] - Test Cycle description
@@ -62,7 +62,7 @@ export interface SearchTestCyclesParams {
  * @property {string} [plannedEndDate] - Planned end date (dd/MMM/yyyy HH:mm)
  * @property {number} [actualTime] - Actual time in milliseconds
  * @property {boolean} [isAutomated] - Whether test cycle is automated or not
- * @property {number} [assignee] - Jira user account uuid to assign test cycle
+ * @property {string} [assignee] - Jira user account uuid to assign test cycle
  * @property {{ id: string; value: string }[]} [customFields] - Custom fields for the test cycle
  */
 export interface CreateTestCycleParams {
@@ -71,7 +71,7 @@ export interface CreateTestCycleParams {
   folderId?: number;
   priority?: number;
   status?: number;
-  reporter?: number;
+  reporter?: string;
   labels?: number[];
   testCasesToLink?: string;
   description?: string;
@@ -79,7 +79,7 @@ export interface CreateTestCycleParams {
   plannedEndDate?: string;
   actualTime?: number;
   isAutomated?: boolean;
-  assignee?: number;
+  assignee?: string;
   customFields?: { id: string; value: string }[];
 }
 
@@ -91,7 +91,7 @@ export interface CreateTestCycleParams {
  * @property {number} [folderId] - The ID of the folder
  * @property {number} [priority] - Priority Id
  * @property {number} [status] - Status Id
- * @property {number} [reporter] - Jira user account uuid
+ * @property {string} [reporter] - Jira user account uuid
  * @property {number[]} [labels] - List of label Ids (will be sent as {add: [labelId1, ...]} to API)
  * @property {string} [testCasesToLink] - Either list of test case Ids or search filter query
  * @property {string} [description] - Test Cycle description
@@ -99,16 +99,17 @@ export interface CreateTestCycleParams {
  * @property {string} [plannedEndDate] - Planned end date (dd/MMM/yyyy HH:mm)
  * @property {number} [actualTime] - Actual time in milliseconds
  * @property {boolean} [isAutomated] - Whether test cycle is automated or not
- * @property {number} [assignee] - Jira user account uuid
+ * @property {string} [assignee] - Jira user account uuid
  * @property {{ id: string; value: string }[]} [customFields] - Custom fields for the test cycle
  */
 export interface UpdateTestCycleParams {
+  id: string;
   summary: string;
   projectId: string;
   folderId?: number;
   priority?: number;
   status?: number;
-  reporter?: number;
+  reporter?: string;
   labels?: number[];
   testCasesToLink?: string;
   description?: string;
@@ -116,7 +117,7 @@ export interface UpdateTestCycleParams {
   plannedEndDate?: string;
   actualTime?: number;
   isAutomated?: boolean;
-  assignee?: number;
+  assignee?: string;
   customFields?: { id: string; value: string }[];
 }
 

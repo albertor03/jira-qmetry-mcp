@@ -334,7 +334,7 @@ export const testCasesTools: Array<ToolDefinition> = [
           .number()
           .optional()
           .describe('Refer id from the response of API "Get Priorities".'),
-        assignee: z.number().optional().describe('Jira user Account ID'),
+        assignee: z.string().optional().describe('Jira user Account ID'),
         description: z.string().optional().describe('Description of Test Case'),
         precondition: z
           .string()
@@ -428,7 +428,7 @@ export const testCasesTools: Array<ToolDefinition> = [
           ),
         fields: z
           .object({
-            assignee: z.number().optional().describe('Jira user Account ID'),
+            assignee: z.string().optional().describe('Jira user Account ID'),
             description: z
               .string()
               .optional()
@@ -463,7 +463,7 @@ export const testCasesTools: Array<ToolDefinition> = [
               .describe(
                 'Refer id from the response of API "Get QMetry Enabled Projects".'
               ),
-            reporter: z.number().optional().describe('Jira user Account ID'),
+            reporter: z.string().optional().describe('Jira user Account ID'),
             status: z
               .number()
               .optional()

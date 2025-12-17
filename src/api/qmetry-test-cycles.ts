@@ -143,7 +143,6 @@ export async function createQmetryTestCycle(
  * @returns {Promise<{content: [{type: string, text: string}]}>} The response from the API
  */
 export async function updateQmetryTestCycle(
-  id: string,
   params: UpdateTestCycleParams
 ): Promise<{ content: [{ type: string; text: string }] }> {
   const api_key = process.env.QMETRY_API_KEY;
@@ -154,8 +153,11 @@ export async function updateQmetryTestCycle(
   }
 
   try {
+    // Exclude 'id' from the body as it's only needed in the URL
+    const { id, ...updateData } = params;
     const url = new URL(`${qmetry_api_url}testcycles/${id}`);
-    const body: Record<string, unknown> = cleanObject(params);
+
+    const body: Record<string, unknown> = cleanObject(updateData);
 
     // Convert labels array to {add: []} format
     if (body.labels && Array.isArray(body.labels)) {
@@ -192,6 +194,7 @@ export async function updateQmetryTestCycle(
               {
                 success: true,
                 message: 'Test cycle updated successfully',
+                body: body,
               },
               null,
               2
