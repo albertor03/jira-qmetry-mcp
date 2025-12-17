@@ -159,7 +159,7 @@ export const testCycleTools: Array<ToolDefinition> = [
             'Refer id from the response of API "Get Test Cycle Status"'
           ),
         reporter: z
-          .number()
+          .string()
           .optional()
           .describe('Pass Jira user account uuid to assign reporter'),
         labels: z
@@ -194,7 +194,7 @@ export const testCycleTools: Array<ToolDefinition> = [
           .optional()
           .describe('Whether test cycle is automated or not - true or false'),
         assignee: z
-          .number()
+          .string()
           .optional()
           .describe('Pass Jira user account uuid to assign test cycle'),
         customFields: z
@@ -250,7 +250,7 @@ export const testCycleTools: Array<ToolDefinition> = [
           .describe(
             'Refer id from the response of API "Get Test Cycle Status"'
           ),
-        reporter: z.number().optional().describe('Pass Jira user account uuid'),
+        reporter: z.string().optional().describe('Pass Jira user account uuid'),
         labels: z
           .array(z.number())
           .optional()
@@ -282,7 +282,10 @@ export const testCycleTools: Array<ToolDefinition> = [
           .boolean()
           .optional()
           .describe('Whether test cycle is automated or not'),
-        assignee: z.number().optional().describe('Pass Jira user account uuid'),
+        assignee: z
+          .string()
+          .optional()
+          .describe('Pass Jira user account uuid to assign test cycle to user'),
         customFields: z
           .array(
             z.object({
@@ -297,9 +300,8 @@ export const testCycleTools: Array<ToolDefinition> = [
           ),
       },
     },
-    handler: async (params: UpdateTestCycleParams & { id: string }) => {
-      const { id, ...updateParams } = params;
-      const result = await updateQmetryTestCycle(id, updateParams);
+    handler: async (params: UpdateTestCycleParams) => {
+      const result = await updateQmetryTestCycle(params);
       return {
         content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
       };

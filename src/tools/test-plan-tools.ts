@@ -221,7 +221,7 @@ export const testPlanTools: Array<ToolDefinition> = [
         folderId: z.number().optional().describe('The ID of the folder'),
         priority: z.number().optional().describe('Priority Id'),
         status: z.number().optional().describe('Status Id'),
-        reporter: z.number().optional().describe('Pass Jira user account uuid'),
+        reporter: z.string().optional().describe('Pass Jira user account uuid'),
         labels: z
           .array(z.number())
           .optional()

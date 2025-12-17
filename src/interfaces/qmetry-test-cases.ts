@@ -136,7 +136,7 @@ export interface UpdateTestCaseVersionParams {
   no: number;
   status?: number;
   priority?: number;
-  assignee?: number;
+  assignee?: string;
   description?: string;
   precondition?: string;
   estimatedTime?: string;
@@ -172,7 +172,7 @@ export interface AddTestCaseVersionParams {
   id: string;
   copyFromVersion: number;
   fields?: {
-    assignee?: number;
+    assignee?: string;
     description?: string;
     precondition?: string;
     estimatedTime?: string;
@@ -180,7 +180,7 @@ export interface AddTestCaseVersionParams {
     labels?: number[];
     priority?: number;
     projectId?: number;
-    reporter?: number;
+    reporter?: string;
     status?: number;
     steps?: Array<{
       stepDetails: string;
