@@ -41,7 +41,11 @@ const server = new McpServer({
 function registerTools(server: McpServer, tools: ToolDefinition[]) {
   tools.forEach(tool => {
     try {
-      server.registerTool(tool.name, tool.definition, tool.handler as any);
+      server.registerTool(
+        tool.name,
+        tool.definition,
+        tool.handler as unknown as any
+      );
       toolRegistry.set(tool.name, tool);
     } catch (error) {
       process.stderr.write(`Error registering tool ${tool.name}: ${error}\n`);
