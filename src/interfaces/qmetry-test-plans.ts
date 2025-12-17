@@ -48,7 +48,7 @@ export interface GetTestPlanParams {
  * @property {number} [folderId] - The ID of the folder
  * @property {number} [priority] - Priority Id
  * @property {number} [status] - Status Id
- * @property {number} [reporter] - Jira user account uuid
+ * @property {string} [reporter] - Jira user account uuid
  * @property {number[]} [labels] - List of label Ids
  * @property {object} [testcycles] - Test cycles to link
  * @property {string} [description] - Test Plan description
@@ -60,7 +60,7 @@ export interface CreateTestPlanParams {
   folderId?: number;
   priority?: number;
   status?: number;
-  reporter?: number;
+  reporter?: string;
   labels?: number[];
   testcycles?: {
     testcycleIds: string[];
@@ -77,7 +77,7 @@ export interface CreateTestPlanParams {
  * @property {number} [folderId] - The ID of the folder
  * @property {number} [priority] - Priority Id
  * @property {number} [status] - Status Id
- * @property {number} [reporter] - Jira user account uuid
+ * @property {string} [reporter] - Jira user account uuid
  * @property {number[]} [labels] - List of label Ids
  * @property {string} [description] - Test Plan description
  * @property {{ id: string; value: string }[]} [customFields] - Custom fields for the test plan
@@ -88,7 +88,7 @@ export interface UpdateTestPlanParams {
   folderId?: number;
   priority?: number;
   status?: number;
-  reporter?: number;
+  reporter?: string;
   labels?: number[];
   description?: string;
   customFields?: { id: string; value: string }[];
