@@ -31,7 +31,7 @@ import { testCycleExecutionTools } from './tools/test-cycle-execution-tools.js';
  */
 const server = new McpServer({
   name: 'Jira Qmetry MCP',
-  version: '1.8.2',
+  version: '1.8.3',
   title: 'Jira QMetry Test Management MCP Server',
 });
 
@@ -45,13 +45,12 @@ const server = new McpServer({
  */
 function registerTools(server: McpServer, tools: ToolDefinition[]) {
   tools.forEach(tool => {
-    try {
-      return server.registerTool(tool.name, tool.definition, tool.handler as unknown as any);
-    } catch (error) {
-      // Log to stderr instead of stdout to avoid interfering with MCP protocol
-      process.stderr.write(`Error registering tool ${tool.name}: ${error}\n`);
-      throw error;
-    }
+    server.registerTool(
+      tool.name,
+      tool.definition,
+
+      tool.handler as unknown as Parameters<typeof server.registerTool>[2]
+    );
   });
 }
 

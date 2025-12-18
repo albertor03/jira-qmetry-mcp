@@ -441,8 +441,8 @@ Para guías detalladas de contribución, consulta [CONTRIBUTING.md](CONTRIBUTING
 
 ## 🔄 Versión
 
-**v1.8.2** - Versión actual del servidor MCP
+**v1.8.3** - Versión actual del servidor MCP
 
 ### Notas de la Versión
 
-- ✅ **v1.8.2** - Corrección de tipos de campos assignee y reporter: Cambiados de number a string para soportar correctamente los UUIDs de cuentas de usuario de Jira
+- ✅ **v1.8.3** - Corrección de compatibilidad SDK: Downgrade a SDK 1.22.0 para resolver bug de extracción de literales en Zod v4
