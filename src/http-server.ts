@@ -31,7 +31,7 @@ const toolRegistry: Map<string, ToolDefinition> = new Map();
  */
 const server = new McpServer({
   name: 'Jira Qmetry MCP HTTP',
-  version: '1.8.2',
+  version: '1.8.3',
   title: 'Jira QMetry Test Management MCP Server (HTTP)',
 });
 

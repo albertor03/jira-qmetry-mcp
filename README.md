@@ -441,8 +441,8 @@ For detailed contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## 🔄 Version
 
-**v1.8.2** - Current MCP server version
+**v1.8.3** - Current MCP server version
 
 ### Release Notes
 
-- ✅ **v1.8.2** - Fix assignee and reporter field types: Changed from number to string to properly support Jira user account UUIDs
+- ✅ **v1.8.3** - Fix SDK compatibility: Downgrade to SDK 1.22.0 to resolve Zod v4 literal extraction bug

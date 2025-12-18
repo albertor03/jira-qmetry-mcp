@@ -1,6 +1,6 @@
 {
   "name": "jira-qmetry-mcp-server",
-  "version": "1.8.2",
+  "version": "1.8.3",
   "description": "MCP Server for QMetry Test Management in Jira",
   "main": "dist/main.js",
   "type": "module",
