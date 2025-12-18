@@ -46,7 +46,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "1.25.1",
+    "@modelcontextprotocol/sdk": "1.22.0",
     "cors": "2.8.5",
     "express": "4.21.2",
     "node-fetch": "2.6.7",
@@ -54,8 +54,7 @@
   },
   "pnpm": {
     "overrides": {
-      "body-parser": ">=2.2.1",
-      "@modelcontextprotocol/sdk": ">=1.24.0"
+      "body-parser": ">=2.2.1"
     }
   },
   "devDependencies": {
